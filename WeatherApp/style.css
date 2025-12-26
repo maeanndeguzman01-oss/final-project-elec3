@@ -1,0 +1,377 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #0099cc;
+    --secondary-color: #00bfff;
+    --dark-bg: #f5f7fa;
+    --card-bg: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="dark"] {
+    --primary-color: #00d4ff;
+    --secondary-color: #00b8e6;
+    --dark-bg: #0a1628;
+    --card-bg: #1a2332;
+    --text-primary: #ffffff;
+    --text-secondary: #b0bec5;
+    --border-color: rgba(0, 212, 255, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--dark-bg);
+    min-height: 100vh;
+    color: var(--text-primary);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.app-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 0;
+}
+
+.header-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.app-header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #0099cc, #00bfff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+html[data-theme="dark"] .app-header h1 {
+    background: linear-gradient(135deg, #00d4ff, #00b8e6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tagline {
+    color: var(--text-secondary);
+    font-size: 1.1em;
+    font-weight: 300;
+}
+
+.theme-toggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    background: var(--card-bg);
+    color: var(--text-primary);
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    background: var(--primary-color);
+    color: var(--card-bg);
+    transform: rotate(20deg);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.search-section {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.search-section input {
+    flex: 1;
+    padding: 16px 20px;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    color: var(--text-primary);
+    font-size: 1em;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-section input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+html[data-theme="dark"] .search-section input:focus {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.search-section input::placeholder {
+    color: var(--text-secondary);
+}
+
+.search-section button {
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #0099cc, #00bfff);
+    border: none;
+    border-radius: 15px;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1em;
+}
+
+html[data-theme="dark"] .search-section button {
+    background: linear-gradient(135deg, #00d4ff, #00b8e6);
+    color: #000;
+}
+
+.search-section button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 153, 204, 0.3);
+}
+
+html[data-theme="dark"] .search-section button:hover {
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+}
+
+.search-section button:active {
+    transform: translateY(-1px);
+}
+
+.weather-info {
+    display: none;
+}
+
+.current-weather {
+    background: var(--card-bg);
+    border-radius: 25px;
+    padding: 40px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 32px var(--shadow-color);
+}
+
+.location-info {
+    margin-bottom: 25px;
+}
+
+.location {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.main-weather {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.temp-section {
+    flex: 1;
+}
+
+.temperature {
+    font-size: 4.5em;
+    font-weight: bold;
+    color: var(--primary-color);
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 1.4em;
+    color: var(--text-secondary);
+    text-transform: capitalize;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.detail-card {
+    background: rgba(0, 153, 204, 0.05);
+    border: 1px solid rgba(0, 153, 204, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+html[data-theme="dark"] .detail-card {
+    background: rgba(0, 212, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.detail-card:hover {
+    background: rgba(0, 153, 204, 0.1);
+    border-color: rgba(0, 153, 204, 0.4);
+    transform: translateY(-5px);
+}
+
+html[data-theme="dark"] .detail-card:hover {
+    background: rgba(0, 212, 255, 0.1);
+    border-color: rgba(0, 212, 255, 0.4);
+}
+
+.detail-icon {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.detail-label {
+    color: var(--text-secondary);
+    font-size: 0.95em;
+    margin-bottom: 8px;
+}
+
+.detail-value {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.forecast-section {
+    background: var(--card-bg);
+    border-radius: 25px;
+    padding: 40px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 32px var(--shadow-color);
+}
+
+.forecast-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+}
+
+.forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.forecast-card {
+    background: rgba(0, 153, 204, 0.05);
+    border: 1px solid rgba(0, 153, 204, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+html[data-theme="dark"] .forecast-card {
+    background: rgba(0, 212, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.forecast-card:hover {
+    background: rgba(0, 153, 204, 0.15);
+    border-color: var(--primary-color);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 153, 204, 0.2);
+}
+
+html[data-theme="dark"] .forecast-card:hover {
+    background: rgba(0, 212, 255, 0.15);
+    box-shadow: 0 15px 35px rgba(0, 212, 255, 0.2);
+}
+
+.forecast-day {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
+.forecast-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 12px;
+    filter: drop-shadow(0 0 5px rgba(0, 153, 204, 0.2));
+}
+
+html[data-theme="dark"] .forecast-icon {
+    filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.3));
+}
+
+.forecast-temp {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.forecast-desc {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    text-transform: capitalize;
+}
+
+.error {
+    display: none;
+    background: linear-gradient(135deg, #ff6b6b, #ff4757);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 20px;
+    animation: shake 0.5s;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+@media (max-width: 768px) {
+    .app-header h1 {
+        font-size: 2em;
+    }
+    
+    .current-weather,
+    .forecast-section {
+        padding: 25px;
+    }
+    
+    .temperature {
+        font-size: 3em;
+    }
+    
+    .details-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .forecast-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

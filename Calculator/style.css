@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1e1e2f;
+}
+
+.calculator {
+    background: #2c2c3e;
+    padding: 20px;
+    border-radius: 12px;
+    width: 340px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+#display {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 15px;
+    text-align: right;
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #1e1e2f;
+    color: #ffffff;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    padding: 15px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #3a3a52;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.operator {
+    background: #ff9800;
+}
+
+.equals {
+    background: #4caf50;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+/* History */
+.history-container {
+    margin-top: 20px;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history-header h3 {
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+#clearHistory {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    background: #f44336;
+    color: white;
+}
+
+#history {
+    list-style: none;
+    max-height: 120px;
+    overflow-y: auto;
+    padding: 0;
+    margin-top: 8px;
+}
+
+#history li {
+    background: #3a3a52;
+    color: #ffffff;
+    padding: 6px;
+    margin-bottom: 6px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
